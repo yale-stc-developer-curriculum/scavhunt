@@ -55,7 +55,7 @@ class CluesController < ApplicationController
   	clue = Clue.find_by(location: params[:location])
   	if clue && clue.unlock_digest == params[:answer]
   		num = clue.number
-  		next_clue = Clue.find_by(number: (num+1)%8)
+  		next_clue = Clue.find_by(number: ((num%8)+1))
       return {correct: true, clue: next_clue}
   	else
   	  return {correct: false, clue: clue}
