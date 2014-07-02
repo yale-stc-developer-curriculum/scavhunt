@@ -8,6 +8,20 @@ class CluesController < ApplicationController
     @clue = Clue.new
   end
 
+  def all
+    @clues = Clue.all
+  end
+
+  def edit
+    @clue = Clue.find_by(number: params[:number])
+  end
+
+  def update
+    Clue.find_by(number: params[:clue][:number]).update_attributes(clue_params)
+    flash[:message] = "Success"
+    redirect_to '/admin/edit/' + params[:clue][:number]
+  end
+
   def create
     Clue.create(clue_params)
     flash[:message] = "Success"
