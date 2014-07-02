@@ -1,13 +1,10 @@
-require 'pry'
-
 class Api::V1::CluesController < ApplicationController
   respond_to :json
-  
+
   def respond
   	res = check_answer
   	if res
   		@correct = { :status => "correct", :body => res.body }
-  		binding.pry
   		respond_with @correct
   	else
   	    @wrong = { :status => "wrong"}
