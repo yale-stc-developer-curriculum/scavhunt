@@ -9,4 +9,6 @@ get '/admin/edit/:number', to: 'clues#edit'
 patch '/admin/update', to: 'clues#update'
 get '/admin/all', to: 'clues#all'
 post '/correct', to: 'clues#correct'
+
+root 'teams#index'
 end
