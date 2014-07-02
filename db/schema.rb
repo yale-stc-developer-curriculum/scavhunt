@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140702173445) do
+ActiveRecord::Schema.define(version: 20140702174708) do
 
   create_table "clues", force: true do |t|
     t.integer  "number"
@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(version: 20140702173445) do
   end
 
   add_index "clues", ["location"], name: "index_clues_on_location"
+
+  create_table "stations", force: true do |t|
+    t.integer  "number"
+    t.integer  "team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "teams", force: true do |t|
     t.string   "name"
