@@ -1,0 +1,19 @@
+<% if flash[:message] %>
+<h3><%= flash[:message] %></h3>
+<% end %>
+
+<%= form_for @clue, url: {action: "create"} do |f| %>
+  <%= f.label :number %>
+  <%= f.number_field :number %>
+  <br>
+  <%= f.label :location %>
+  <%= f.text_field :location %>
+  <br>
+  <%= f.label :unlock_digest %>
+  <%= f.text_area :unlock_digest, size: "60x12" %>
+  <br>
+  <%= f.label :body %>
+  <%= f.text_area :body, size: "60x12" %>
+  <br>
+  <%= f.submit "Create" %>
+<% end %>

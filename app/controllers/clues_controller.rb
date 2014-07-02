@@ -4,6 +4,16 @@ class CluesController < ApplicationController
   	@result = check_answer
   end
 
+  def new
+    @clue = Clue.new
+  end
+
+  def create
+    Clue.create(clue_params)
+    flash[:message] = "Success"
+    redirect_to '/admin/new'
+  end
+
   private
 
   def clue_params
@@ -21,4 +31,8 @@ class CluesController < ApplicationController
   	end
   end
 
+private
+    def clue_params
+      params.require(:clue).permit(:number, :location, :body, :unlock_digest)
+    end
 end
