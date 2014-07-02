@@ -1,0 +1,6 @@
+<% if @result[:correct] %>
+<h1>Correct --- Here's your next clue:</h1>
+<p><%= @result[:clue].body %></p>
+<% else %>
+<h1>Wrong --- Try again!</h1>
+<% end %>
