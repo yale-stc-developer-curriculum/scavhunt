@@ -2,7 +2,12 @@
 <h3><%= flash[:message] %></h3>
 <% end %>
 
-<% if @result == nil %>
+<% if flash[:moveon] %>
+	
+<h1>Here's your next clue:</h1>
+<p><%= @result[:clue].body %></p>
+
+<% elsif @result[:correct] %>
 <h1>Correct -- What's your team name?</h1>
 <%= form_tag("/correct", method: "post") do%>
 	<select name = "team">
@@ -14,10 +19,6 @@
 	<input type="submit" value="Continue" />
 <% end %>
 
-<% elsif @result[:correct] %>
-	
-<h1>Here's your next clue:</h1>
-<p><%= @result[:clue].body %></p>
 <% else %>
 <h1>Wrong --- Try again!</h1>
 <% end %>

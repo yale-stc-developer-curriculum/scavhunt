@@ -5,6 +5,7 @@ class CluesController < ApplicationController
     session[:answer] = params[:answer]
     @teams = Team.all
     @cluenum = Clue.find_by(location: params[:location]).number
+    @result = check_answer
   end
 
   def correct
@@ -16,6 +17,7 @@ class CluesController < ApplicationController
     if @result[:clue].number == team.start
       render 'done'
     end
+    flash[:moveon] = true
     render 'index'  
   end
 
